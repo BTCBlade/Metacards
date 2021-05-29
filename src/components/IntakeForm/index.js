@@ -38,9 +38,15 @@ const IntakeForm = () => {
 
   //Set TokenURI as IPFS upload url and hash.
   const [tokenURI, setTokenURI] = useState("https://www.google.com");
-
-  const apiSecret = process.env.REACT_APP_FLEEK_API_SECRET;
-  const apiKey = process.env.REACT_APP_FLEEK_API_KEY;
+  let apiSecret;
+  let apiKey;
+  if (process.env.NODE_ENV !== "production") {
+    apiSecret = process.env.REACT_APP_FLEEK_API_SECRET;
+    apiKey = process.env.REACT_APP_FLEEK_API_KEY;
+  } else {
+    //production access of environment variables
+    //named same but not sure how to access
+  }
 
   const testFleekUpload = async (data) => {
     const date = new Date();
