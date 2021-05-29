@@ -90,7 +90,7 @@ const IntakeForm = () => {
           <div>{error}</div>
         ))}
       </div>
-      <Button className="upload-btn" variant="outline-secondary" type="submit">
+      <Button className="upload-btn" variant="secondary" type="submit">
         Upload
       </Button>
     </Form>
