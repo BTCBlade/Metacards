@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
-
 import Web3 from "web3";
-
-import fleekStorage from "@fleekhq/fleek-storage-js";
-
 import "./IntakeForm.css";
 
 import Form from "react-bootstrap/Form";
@@ -19,11 +14,6 @@ const ipfsAPI = require('ipfs-api');
 const ipfs = ipfsAPI('ipfs.infura.io', '5001', {protocol: 'https'});
 
 const MetaCardNftContacts = "0xc85D232cdf6eB37533a72F86f16e0Df306c391cC";
-
-const ONE_ETHER = 1000000000000000000;
-const testURI = "https//www.google.com";
-
-
 
 const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
@@ -61,7 +51,7 @@ const IntakeForm = () => {
     );
 
     await MetaCardContract.methods
-      .mint(Ethaccounts[0], Math.floor(Math.random(100000) * 10), TokenURI)
+      .mint(Ethaccounts[0], Math.floor(Math.random() * (10000000 - 1)) + 1, TokenURI)
       .send({ from: Ethaccounts[0] })
       .once("receipt", (receipt) => {
         console.log(receipt);
