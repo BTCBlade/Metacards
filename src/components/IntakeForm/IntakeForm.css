@@ -1,3 +1,8 @@
+.intakeForm-Row {
+  display: flex;
+  flex-direction: row;
+}
+
 .intakeForm {
   display: flex;
   justify-content: center;
@@ -8,7 +13,8 @@
   border: solid 1px;
   border-radius: 2rem;
   background-color: white;
-  margin-left: 3rem;
+  margin-left: 5rem;
+  margin-top: 2rem;
 }
 .intakeForm > h2 {
   margin-top: 0;

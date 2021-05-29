@@ -9,6 +9,9 @@ import "./IntakeForm.css";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import MetaCardsABI from "./MetaCardsNft.json";
 const MetaCardNftContacts = "0x00d90b17f0A9E12A97bf330B7C718e5b92880e0B";
@@ -136,90 +139,97 @@ const IntakeForm = () => {
 
   return (
     <>
-      <Form className="intakeForm" onSubmit={send_as_JSON}>
-        <h2>Data Intake</h2>
-        <div className="input-div">
-          <label htmlFor="name">Name</label>
-          <input
-            name="name"
-            type="text"
-            placeholder="Your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <div className="input-div">
-          <label htmlFor="twitter">Twitter</label>
-          <input
-            name="twitter"
-            type="text"
-            placeholder="Your twitter"
-            value={twitter}
-            onChange={(e) => setTwitter(e.target.value)}
-          />
-        </div>
-        <div className="input-div">
-          <label htmlFor="file">Image File</label>
-          <input
-            id="file-input"
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              const file = e.target.files[0];
-              setImage(file);
-            }}
-          />
-        </div>
-        <div>
-          {errors.map((error) => (
-            <div>{error}</div>
-          ))}
-        </div>
-        <Button className="upload-btn" variant="secondary" type="submit">
-          Upload
-        </Button>
-      </Form>
-
-      <div
-        Style="background-color:white;
+      <Container>
+        <Row className="intakeForm-Row">
+          <Col className="intakeForm-Col">
+            <Form className="intakeForm" onSubmit={send_as_JSON}>
+              <h2>Data Intake</h2>
+              <div className="input-div">
+                <label htmlFor="name">Name</label>
+                <input
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="input-div">
+                <label htmlFor="twitter">Twitter</label>
+                <input
+                  name="twitter"
+                  type="text"
+                  placeholder="Your twitter"
+                  value={twitter}
+                  onChange={(e) => setTwitter(e.target.value)}
+                />
+              </div>
+              <div className="input-div">
+                <label htmlFor="file">Image File</label>
+                <input
+                  id="file-input"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    setImage(file);
+                  }}
+                />
+              </div>
+              <div>
+                {errors.map((error) => (
+                  <div>{error}</div>
+                ))}
+              </div>
+              <Button className="upload-btn" variant="secondary" type="submit">
+                Upload
+              </Button>
+            </Form>
+          </Col>
+          <Col>
+            <div
+              Style="background-color:white;
                         width:300px;
                         height: 500px;
                         margin:30px;
                         padding:15px;"
-      >
-        {/* <h1> Input the following Information to mint a Token </h1> */}
+            >
+              {/* <h1> Input the following Information to mint a Token </h1> */}
 
-        <h1> Enter Info: </h1>
+              <h1> Enter Info: </h1>
 
-        <h2>Token ID: </h2>
-        <input
-          type="text"
-          value={tokenID}
-          onChange={(e) => setTokenID(e.target.value)}
-        />
+              <h2>Token ID: </h2>
+              <input
+                type="text"
+                value={tokenID}
+                onChange={(e) => setTokenID(e.target.value)}
+              />
 
-        <h2>Public Key:</h2>
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+              <h2>Public Key:</h2>
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
 
-        <h2>TokenURI:</h2>
-        <input
-          type="text"
-          value={tokenURI}
-          onChange={(e) => setTokenURI(e.target.value)}
-        />
+              <h2>TokenURI:</h2>
+              <input
+                type="text"
+                value={tokenURI}
+                onChange={(e) => setTokenURI(e.target.value)}
+              />
 
-        <br />
-        <br />
+              <br />
+              <br />
 
-        <button onClick={() => mint_nft()}>Submit</button>
+              <button onClick={() => mint_nft()}>Submit</button>
 
-        <br />
-        <h2>Wallet Amount: {walletAmount}</h2>
-      </div>
+              <br />
+              <h2>Wallet Amount: {walletAmount}</h2>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };

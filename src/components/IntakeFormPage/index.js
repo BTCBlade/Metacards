@@ -50,6 +50,7 @@ export default function IntakeFormPage() {
   return (
     <>
       <Container className="IntakeFormPage-Main">
+        <Nav></Nav>
         <IntakeForm />
       </Container>
     </>
