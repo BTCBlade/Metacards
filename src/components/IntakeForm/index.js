@@ -46,6 +46,8 @@ const IntakeForm = () => {
   } else {
     //production access of environment variables
     //named same but not sure how to access
+    apiSecret = process.env.REACT_APP_FLEEK_API_SECRET;
+    apiKey = process.env.REACT_APP_FLEEK_API_KEY;
   }
 
   const testFleekUpload = async (data) => {
