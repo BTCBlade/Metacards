@@ -165,6 +165,6 @@ Contributions are what make the open source community such an amazing place to b
 - Serg Lotz
 - Ahmed Atlas
 - Tommy Chen
-- 
+- Kyle Longrich 
 
 Project Link: [https://github.com/BTCBlade/Metacards](https://github.com/BTCBlade/Metacards)
