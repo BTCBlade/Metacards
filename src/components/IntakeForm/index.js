@@ -14,71 +14,26 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import MetaCardsABI from "./MetaCardsNft.json";
-const MetaCardNftContacts = "0x00d90b17f0A9E12A97bf330B7C718e5b92880e0B";
+
+const ipfsAPI = require('ipfs-api');
+const ipfs = ipfsAPI('ipfs.infura.io', '5001', {protocol: 'https'});
+
+const MetaCardNftContacts = "0xc85D232cdf6eB37533a72F86f16e0Df306c391cC";
 
 const ONE_ETHER = 1000000000000000000;
-
 const testURI = "https//www.google.com";
+
+
 
 const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
   const [twitter, setTwitter] = useState("");
-  const [image, setImage] = useState(null);
-
+  
+  const [image, setImage] = useState(null);  
   const [walletAmount, setWalletAmount] = useState("");
 
-  //Need a way to generate tokenIDs
-  const [tokenID, setTokenID] = useState(147);
 
-  //Can enter public key or pull from connected wallet with {Accounts[0]}
-  const [address, setAddress] = useState(
-    "0xb2aB0c8E2302eA6D1cF2C2bE505fbBb8816AeA41"
-  );
-
-  //Set TokenURI as IPFS upload url and hash.
-  const [tokenURI, setTokenURI] = useState("https://www.google.com");
-  let apiSecret;
-  let apiKey;
-  if (process.env.NODE_ENV !== "production") {
-    apiSecret = process.env.REACT_APP_FLEEK_API_SECRET;
-    apiKey = process.env.REACT_APP_FLEEK_API_KEY;
-  } else {
-    //production access of environment variables
-    //named same but not sure how to access
-    apiSecret = process.env.REACT_APP_FLEEK_API_SECRET;
-    apiKey = process.env.REACT_APP_FLEEK_API_KEY;
-  }
-
-  const testFleekUpload = async (data) => {
-    const date = new Date();
-    const timestamp = date.getTime();
-
-    const input = {
-      apiKey,
-      apiSecret,
-      key: `file-${timestamp}`,
-      data,
-    };
-    try {
-      const result = await fleekStorage.upload(input);
-      console.log(result);
-    } catch (e) {
-      console.log("error", e);
-    }
-  };
-
-  //JSON version
-  const send_as_JSON = async (e) => {
-    e.preventDefault();
-    let ret_JSON = { name: name, twitter: twitter, image: image };
-    console.log(ret_JSON);
-    testFleekUpload(image);
-  };
-
-  const send_to_IPFS = async (e) => {
-    e.preventDefault();
-  };
   async function get_tokenURI(tokenID) {
     const web3 = window.web3;
     const Ethaccounts = await web3.eth.getAccounts();
@@ -92,10 +47,11 @@ const IntakeForm = () => {
       .tokenURI(tokenID)
       .call(function (error, result) {
         console.log(result);
+        console.log(error);
       });
   }
 
-  async function mint_nft() {
+  async function mint_nft(TokenURI) {
     const web3 = window.web3;
     const Ethaccounts = await web3.eth.getAccounts();
 
@@ -105,11 +61,28 @@ const IntakeForm = () => {
     );
 
     await MetaCardContract.methods
-      .mint(Ethaccounts[0], tokenID, tokenURI)
+      .mint(Ethaccounts[0], 100, TokenURI)
       .send({ from: Ethaccounts[0] })
       .once("receipt", (receipt) => {
         console.log(receipt);
       });
+  }
+
+  async function send_data_to_ipfs() {
+ 
+    let data = {
+      "name" : name,
+      "twitter" : twitter,
+      "Image" : image
+    }
+
+    await ipfs.files.add(Buffer.from(JSON.stringify(data)), function (err, res) {
+      if (err) {
+          console.log(err);
+      }
+      console.log(res[0].hash);
+      mint_nft("https://www.ipfs.io/ipfs/" + res[0].hash);
+    })
   }
 
   async function loadWeb3() {
@@ -150,7 +123,7 @@ const IntakeForm = () => {
       <Container>
         <Row className="intakeForm-Row">
           <Col className="intakeForm-Col">
-            <Form className="intakeForm" onSubmit={send_as_JSON}>
+            <Form className="intakeForm">
               <h2>Data Intake</h2>
               <div className="input-div">
                 <label htmlFor="name">Name</label>
@@ -189,57 +162,10 @@ const IntakeForm = () => {
                   <div>{error}</div>
                 ))}
               </div>
-              <Button className="upload-btn" variant="secondary" type="submit">
+              <Button onClick={() => send_data_to_ipfs()}>
                 Upload
               </Button>
             </Form>
-          </Col>
-          <Col>
-            <div
-              Style="background-color:white;
-                        display: flex;
-                        justify-content: center;
-                        flex-direction: column;
-                        text-align:center;
-                        border-radius: 2rem;
-                        width:300px;
-                        height: 300px;
-                        margin:30px;
-                        padding:15px;"
-            >
-              {/* <h1> Input the following Information to mint a Token </h1> */}
-
-              <h1> Enter Info: </h1>
-
-              <h2>Token ID: </h2>
-              <input
-                type="text"
-                value={tokenID}
-                onChange={(e) => setTokenID(e.target.value)}
-              />
-
-              <h2>Public Key:</h2>
-              <input
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-
-              <h2>TokenURI:</h2>
-              <input
-                type="text"
-                value={tokenURI}
-                onChange={(e) => setTokenURI(e.target.value)}
-              />
-
-              <br />
-              <br />
-
-              <button onClick={() => mint_nft()}>Submit</button>
-
-              <br />
-              <h2>Wallet Amount: {walletAmount}</h2>
-            </div>
           </Col>
         </Row>
       </Container>
