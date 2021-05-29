@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import IntakeForm
+import IntakeForm from "./components/IntakeForm";
 
 function App() {
   return (
@@ -8,6 +8,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <h1>Metacards</h1>
+          <IntakeForm />
         </Route>
       </Switch>
     </BrowserRouter>

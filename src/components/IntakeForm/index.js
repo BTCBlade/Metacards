@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+import "./IntakeForm.css";
 
 const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [image, setImage] = useState(null);
 
-  const send_to_IPFS = () => {};
+  const send_to_IPFS = async (e) => {
+    e.preventDefault();
+
+    console.log("name:", name);
+    console.log("twitter:", twitter);
+    console.log("file:", image);
+  };
 
   return (
     <form onSubmit={send_to_IPFS}>
@@ -16,26 +24,37 @@ const IntakeForm = () => {
         ))}
       </div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="name">Name</label>
         <input
-          name="email"
+          name="name"
           type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
+          placeholder="Your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="twitter">Twitter</label>
         <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
+          name="twitter"
+          type="text"
+          placeholder="Your twitter"
+          value={twitter}
+          onChange={(e) => setTwitter(e.target.value)}
         />
-        <button type="submit">Login</button>
       </div>
+      <div>
+        <label htmlFor="file">Image File</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files[0];
+            setImage(file);
+          }}
+        />
+      </div>
+      <button type="submit">Upload</button>
     </form>
   );
 };
