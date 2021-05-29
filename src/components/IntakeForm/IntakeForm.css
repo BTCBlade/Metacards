@@ -4,9 +4,11 @@
   flex-direction: column;
   padding: 2rem;
   text-align: center;
-  width: 400px;
+  width: 300px;
   border: solid 1px;
   border-radius: 2rem;
+  background-color: white;
+  margin-left: 3rem;
 }
 .intakeForm > h2 {
   margin-top: 0;
