@@ -13,23 +13,42 @@ const IntakeForm = () => {
   const [twitter, setTwitter] = useState("");
   const [image, setImage] = useState(null);
 
-  const apiSecret = process.env.FLEEK_API_SECRET;
-  const apiKey = process.env.FLEEK_API_KEY;
+  const apiSecret = process.env.REACT_APP_FLEEK_API_SECRET;
+  const apiKey = process.env.REACT_APP_FLEEK_API_KEY;
+
+  const testFleekUpload = async (data) => {
+    const date = new Date();
+    const timestamp = date.getTime();
+
+    const input = {
+      apiKey,
+      apiSecret,
+      key: `file-${timestamp}`,
+      data,
+    };
+    try {
+      const result = await fleekStorage.upload(input);
+      console.log(result);
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
 
   //JSON version
   const send_as_JSON = async (e) => {
     e.preventDefault();
     let ret_JSON = { name: name, twitter: twitter, image: image };
     console.log(ret_JSON);
-    console.log("apiKey", apiKey);
+    testFleekUpload(image);
   };
-  const send_to_IPFS = async (e) => {
-    e.preventDefault();
 
-    console.log("name:", name);
-    console.log("twitter:", twitter);
-    console.log("file:", image);
-  };
+  // const send_to_IPFS = async (e) => {
+  //   e.preventDefault();
+
+  //   console.log("name:", name);
+  //   console.log("twitter:", twitter);
+  //   console.log("file:", image);
+  // };
 
   return (
     <Form className="intakeForm" onSubmit={send_as_JSON}>
