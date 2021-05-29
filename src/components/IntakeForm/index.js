@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
+
 import "./IntakeForm.css";
 
 import Form from "react-bootstrap/Form";
