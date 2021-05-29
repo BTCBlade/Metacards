@@ -61,7 +61,7 @@ const IntakeForm = () => {
     );
 
     await MetaCardContract.methods
-      .mint(Ethaccounts[0], 100, TokenURI)
+      .mint(Ethaccounts[0], Math.floor(Math.random(100000) * 10), TokenURI)
       .send({ from: Ethaccounts[0] })
       .once("receipt", (receipt) => {
         console.log(receipt);
