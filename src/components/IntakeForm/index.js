@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
+import fleekStorage from "@fleekhq/fleek-storage-js";
 
 import "./IntakeForm.css";
 
@@ -12,11 +13,15 @@ const IntakeForm = () => {
   const [twitter, setTwitter] = useState("");
   const [image, setImage] = useState(null);
 
+  const apiSecret = process.env.FLEEK_API_SECRET;
+  const apiKey = process.env.FLEEK_API_KEY;
+
   //JSON version
   const send_as_JSON = async (e) => {
     e.preventDefault();
     let ret_JSON = { name: name, twitter: twitter, image: image };
     console.log(ret_JSON);
+    console.log("apiKey", apiKey);
   };
   const send_to_IPFS = async (e) => {
     e.preventDefault();
@@ -52,6 +57,7 @@ const IntakeForm = () => {
       <div className="input-div">
         <label htmlFor="file">Image File</label>
         <input
+          id="file-input"
           type="file"
           accept="image/*"
           onChange={(e) => {

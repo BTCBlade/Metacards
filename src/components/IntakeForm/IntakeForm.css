@@ -28,9 +28,12 @@ label {
   margin-bottom: 0.5rem;
 }
 .input-div > input {
-  margin: 0.2rem;
+  margin: 0.3rem;
 }
 
 .upload-btn {
   margin-top: 1rem;
+}
+#file-input {
+  margin-left: 3rem;
 }
