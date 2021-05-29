@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import IntakeForm
+import IntakeFormPage from "./components/IntakeFormPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <h1>Metacards</h1>
+          <IntakeFormPage />
         </Route>
       </Switch>
     </BrowserRouter>

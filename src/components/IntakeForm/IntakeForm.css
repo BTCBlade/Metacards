@@ -1,0 +1,36 @@
+.intakeForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+  width: 300px;
+  border: solid 1px;
+  border-radius: 2rem;
+  background-color: white;
+  margin-left: 3rem;
+}
+.intakeForm > h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+input,
+label {
+  display: block;
+  text-align: center;
+}
+
+.input-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.input-div > input {
+  margin: 0.2rem;
+}
+
+.upload-btn {
+  margin-top: 1rem;
+}

@@ -1,42 +1,73 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
+import "./IntakeForm.css";
+
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [image, setImage] = useState(null);
 
-  const send_to_IPFS = () => {};
+  //JSON version
+  const send_as_JSON = async (e) => {
+    e.preventDefault();
+    let ret_JSON = { name: name, twitter: twitter, image: image };
+    console.log(ret_JSON);
+  };
+  const send_to_IPFS = async (e) => {
+    e.preventDefault();
+
+    console.log("name:", name);
+    console.log("twitter:", twitter);
+    console.log("file:", image);
+  };
 
   return (
-    <form onSubmit={send_to_IPFS}>
+    <Form className="intakeForm" onSubmit={send_as_JSON}>
+      <h2>Data Intake</h2>
+      <div className="input-div">
+        <label htmlFor="name">Name</label>
+        <input
+          name="name"
+          type="text"
+          placeholder="Your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+      <div className="input-div">
+        <label htmlFor="twitter">Twitter</label>
+        <input
+          name="twitter"
+          type="text"
+          placeholder="Your twitter"
+          value={twitter}
+          onChange={(e) => setTwitter(e.target.value)}
+        />
+      </div>
+      <div className="input-div">
+        <label htmlFor="file">Image File</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files[0];
+            setImage(file);
+          }}
+        />
+      </div>
       <div>
         {errors.map((error) => (
           <div>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={updateEmail}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type="submit">Login</button>
-      </div>
-    </form>
+      <Button className="upload-btn" variant="outline-secondary" type="submit">
+        Upload
+      </Button>
+    </Form>
   );
 };
 
