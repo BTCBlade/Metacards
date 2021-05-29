@@ -1,8 +1,8 @@
-# **Welcome to the [Metacards](https://github.com/BTCBlade/Metacards) github repo!**
+# **Welcome to the [Metacards](https://rarible.com/user/0xbc5f4ab1ffc9cc33bbb7ecbecbc0a0b421fc9dc1) github repo!**
 
 <br />
 <p align="center">
-  <a href="https://github.com/V3RS/skybnb">
+  <a href="https://rarible.com/user/0xbc5f4ab1ffc9cc33bbb7ecbecbc0a0b421fc9dc1">
     <img src="https://skybnb.s3.amazonaws.com/logo.png" alt="Logo" width="80" height="80" style="background-color:white">
   </a>
 
