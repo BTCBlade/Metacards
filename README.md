@@ -98,7 +98,7 @@ Here is everything we need you to do to get started with Skybnb.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/V3RS/skybnb
+   git clone https://github.com/BTCBlade/Metacards
    ```
 2. Install NPM packages
    ```sh
