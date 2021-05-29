@@ -1,4 +1,4 @@
-# **Welcome to the [Metacards](https://rarible.com/user/0xbc5f4ab1ffc9cc33bbb7ecbecbc0a0b421fc9dc1) github repo!**
+# **Welcome to the [Metacards](https://metacards.on.fleek.co/) github repo!**
 
 <br />
 <p align="center">
@@ -70,11 +70,11 @@
 
 ### Built With
 
+- [IPFS](https://ipfs.io/)
+- [Fleek](https://fleek.co/)
+- [Ethereum Smart Contracts](https://ethereum.org/en/)
 - [JavaScript](https://www.javascript.com/)
-- [Python](https://www.python.org/)
 - [React](https://reactjs.org/)
-- [Redux](https://redux.js.org/)
-- [Flask](https://flask-doc.readthedocs.io/en/latest/)
 - [Node.js](https://nodejs.org/en/)
 - [HTML](https://html.com/)
 - [CSS](http://www.css3.info/)
@@ -167,4 +167,4 @@ Contributions are what make the open source community such an amazing place to b
 - Tommy Chen
 - Kyle Longrich 
 
-Project Link: [https://github.com/BTCBlade/Metacards](https://github.com/BTCBlade/Metacards)
+Project Link: [https://metacards.on.fleek.co/](https://metacards.on.fleek.co/)
