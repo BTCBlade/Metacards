@@ -1,5 +1,5 @@
-const Migrations = artifacts.require("Migrations");
+const MetaCardsNFT = artifacts.require("MetaCardsNft");
 
 module.exports = function (deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(MetaCardsNFT, "MetaCards", "MC");
 };
