@@ -10,17 +10,17 @@ import Col from "react-bootstrap/Col";
 
 import MetaCardsABI from "./MetaCardsNft.json";
 
-const ipfsAPI = require('ipfs-api');
-const ipfs = ipfsAPI('ipfs.infura.io', '5001', {protocol: 'https'});
+const ipfsAPI = require("ipfs-api");
+const ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
 
 const MetaCardNftContacts = "0xc85D232cdf6eB37533a72F86f16e0Df306c391cC";
 
 const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
-  const [name, setName] = useState("");
-  const [twitter, setTwitter] = useState("");
-  
-  const [image, setImage] = useState(null);  
+  const [name, setName] = useState("Metacards");
+  const [twitter, setTwitter] = useState("@Twitter_handle");
+
+  const [image, setImage] = useState(null);
   const [walletAmount, setWalletAmount] = useState("");
 
   const [tokenURIlink, setTokenURIlink] = useState("");
@@ -52,7 +52,11 @@ const IntakeForm = () => {
     );
 
     await MetaCardContract.methods
-      .mint(Ethaccounts[0], Math.floor(Math.random() * (10000000 - 1)) + 1, TokenURI)
+      .mint(
+        Ethaccounts[0],
+        Math.floor(Math.random() * (10000000 - 1)) + 1,
+        TokenURI
+      )
       .send({ from: Ethaccounts[0] })
       .once("receipt", (receipt) => {
         console.log(receipt);
@@ -60,21 +64,23 @@ const IntakeForm = () => {
   }
 
   async function send_data_to_ipfs() {
- 
     let data = {
-      "name" : name,
-      "twitter" : twitter,
-      "Image" : image
-    }
+      name: name,
+      twitter: twitter,
+      Image: image,
+    };
 
-    await ipfs.files.add(Buffer.from(JSON.stringify(data)), function (err, res) {
-      if (err) {
+    await ipfs.files.add(
+      Buffer.from(JSON.stringify(data)),
+      function (err, res) {
+        if (err) {
           console.log(err);
+        }
+        console.log(res[0].hash);
+        setTokenURIlink("https://www.ipfs.io/ipfs/" + res[0].hash);
+        mint_nft("https://www.ipfs.io/ipfs/" + res[0].hash);
       }
-      console.log(res[0].hash);
-      setTokenURIlink("https://www.ipfs.io/ipfs/" + res[0].hash);
-      mint_nft("https://www.ipfs.io/ipfs/" + res[0].hash);
-    })
+    );
   }
 
   async function loadWeb3() {
@@ -145,7 +151,8 @@ const IntakeForm = () => {
                   accept="image/*"
                   onChange={(e) => {
                     const file = e.target.files[0];
-                    setImage(file);
+                    setImage(URL.createObjectURL(file));
+                    // setImage(file);
                   }}
                 />
               </div>
@@ -154,16 +161,23 @@ const IntakeForm = () => {
                   <div>{error}</div>
                 ))}
               </div>
-              <Button onClick={() => send_data_to_ipfs()}>
-                Upload
-              </Button>
+              <Button onClick={() => send_data_to_ipfs()}>Upload</Button>
             </Form>
+          </Col>
+          <Col>
+            <div className="metacard-preview-container">
+              <img className="preview-image" src={image}></img>
+              <div className="preview-name">{name}</div>
+              <div className="preview-twitter">{twitter}</div>
+            </div>
           </Col>
         </Row>
       </Container>
       <br />
       <div Style="color: white">
-        <h2>Token URI link: <a href={tokenURIlink}> {tokenURIlink} </a> </h2>
+        <h2>
+          Token URI link: <a href={tokenURIlink}> {tokenURIlink} </a>{" "}
+        </h2>
       </div>
     </>
   );
