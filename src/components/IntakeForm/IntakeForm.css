@@ -43,3 +43,54 @@ label {
 #file-input {
   margin-left: 3rem;
 }
+
+.metacard-preview-container {
+  position: absolute;
+  margin-top: 2rem;
+  background-image: url("Green_screen_metacard.png");
+  background-size: cover;
+  background-color: white;
+  border-radius: 1rem;
+  width: 500px;
+  height: 500px;
+}
+
+.preview-image {
+  position: absolute;
+  z-index: 2;
+  left: 143px;
+  top: 62px;
+  border-radius: 10px;
+  width: 215px;
+  height: 385px;
+}
+
+.preview-name {
+  position: relative;
+  left: 188px;
+  top: 62px;
+  font-weight: bold;
+  z-index: 5;
+  text-align: center;
+  background-color: black;
+  padding-top: 1px;
+  color: silver;
+  width: 135px;
+  height: 23px;
+  border-color: silver;
+  border-bottom: 50px;
+}
+.preview-twitter {
+  position: relative;
+  left: 188px;
+  top: 397px;
+
+  z-index: 6;
+  text-align: center;
+  background-color: black;
+  color: silver;
+  width: 130px;
+  height: 25px;
+  border-color: silver;
+  border-bottom: 50px;
+}
