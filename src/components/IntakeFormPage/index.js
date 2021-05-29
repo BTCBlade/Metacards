@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import IntakeForm from "../IntakeForm";
+import Nav from "../Navbar";
 import Web3 from "web3";
 
 import Container from "react-bootstrap/Container";
@@ -47,8 +48,10 @@ export default function IntakeFormPage() {
     getWalletAmount();
   }, []);
   return (
-    <Container className="IntakeFormPage-Main">
-      <IntakeForm />
-    </Container>
+    <>
+      <Container className="IntakeFormPage-Main">
+        <IntakeForm />
+      </Container>
+    </>
   );
 }
