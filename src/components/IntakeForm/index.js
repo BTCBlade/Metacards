@@ -23,6 +23,7 @@ const IntakeForm = () => {
   const [image, setImage] = useState(null);  
   const [walletAmount, setWalletAmount] = useState("");
 
+  const [tokenURIlink, setTokenURIlink] = useState("");
 
   async function get_tokenURI(tokenID) {
     const web3 = window.web3;
@@ -71,6 +72,7 @@ const IntakeForm = () => {
           console.log(err);
       }
       console.log(res[0].hash);
+      setTokenURIlink("https://www.ipfs.io/ipfs/" + res[0].hash);
       mint_nft("https://www.ipfs.io/ipfs/" + res[0].hash);
     })
   }
@@ -159,6 +161,10 @@ const IntakeForm = () => {
           </Col>
         </Row>
       </Container>
+      <br />
+      <div Style="color: white">
+        <h2>Token URI link: <a href={tokenURIlink}> {tokenURIlink} </a> </h2>
+      </div>
     </>
   );
 };
