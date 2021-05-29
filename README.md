@@ -56,7 +56,7 @@
 [Click here to view Metacards live on the web!](https://skybnb-app.herokuapp.com/)
 <br>
 </br>
-<img src="https://live.staticflickr.com/65535/51119844308_178cd91ae2_h.jpg" alt="homepage ss" />
+<img src="" alt="homepage ss" />
 
 ## Overall Structure
 
