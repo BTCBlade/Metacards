@@ -6,19 +6,20 @@
     <img src="https://skybnb.s3.amazonaws.com/logo.png" alt="Logo" width="80" height="80" style="background-color:white">
   </a>
 
-  <h3 align="center">Skybnb</h3>
+  <h3 align="center">Metacards</h3>
 
   <p align="center">
-    This project clones the popular website, Airbnb with a star wars theme to it. Our web application will provide users the ability to create accounts, log in as a demo, book spots, search for spots, and leaving a rating and review on spots.
+    Invest in others and let people invest in you through NFTs and Trading Cards
+    Platform to Mint your own Trading Card NFTs with a few clicks. 
     <br />
-    <a href="https://github.com/V3RS/skybnb/wiki"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/BTCBlade/Metacards/wiki"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://skybnb-app.herokuapp.com/">View Site</a>
+    <a href="https://github.com/BTCBlade/Metacards">View Site</a>
     ·
-    <a href="https://github.com/V3RS/skybnb/issues">Report Bug</a>
+    <a href="https://github.com/BTCBlade/Metacards/issues">Report Bug</a>
     ·
-    <a href="https://github.com/V3RS/skybnb/issues">Request Feature</a>
+    <a href="https://github.com/BTCBlade/Metacards/issues">Request Feature</a>
   </p>
 </p>
 
@@ -52,7 +53,7 @@
 
 ## About The Project
 
-[Click here to view Musicflix live on the web!](https://skybnb-app.herokuapp.com/)
+[Click here to view Metacards live on the web!](https://skybnb-app.herokuapp.com/)
 <br>
 </br>
 <img src="https://live.staticflickr.com/65535/51119844308_178cd91ae2_h.jpg" alt="homepage ss" />
@@ -61,11 +62,11 @@
 
 ### Back End
 
-The app was built using Flask and SQLAlchemy on the back end with a PostgreSQL database. The backend structure is RESTful with AJAX requests that are fullfilled with JSON Objects. Model associations are used to minimize database queries to the backend, assuring speed and reliability.
+
 
 ### Front End
 
-The front end is built with React and Javascript while utilizing Redux architecture, producing a lightning-fast user interface and calling upon dynamically rendered components.
+
 
 ### Built With
 
@@ -161,9 +162,9 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Contact & Acknowledgements
 
-- John Beck
-- Brandon Forster
+- Serg Lotz
+- Ahmed Atlas
 - Tommy Chen
-- Veer Singh - [LinkedIn](https://www.linkedin.com/in/veerkaran-singh-45b4a9190/) - [GitHub](https://github.com/V3RS)
+- 
 
-Project Link: [https://github.com/V3RS/skybnb/](https://github.com/V3RS/skybnb/)
+Project Link: [https://github.com/BTCBlade/Metacards](https://github.com/BTCBlade/Metacards)
