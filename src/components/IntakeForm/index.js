@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,4 +40,4 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   );
 };
 
-export default LoginForm;
+export default IntakeForm;
