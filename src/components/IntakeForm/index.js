@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import "./IntakeForm.css";
 
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState("");
   const [twitter, setTwitter] = useState("");
   const [image, setImage] = useState(null);
 
+  //JSON version
+  const send_as_JSON = async (e) => {
+    e.preventDefault();
+    let ret_JSON = { name: name, twitter: twitter, image: image };
+    console.log(ret_JSON);
+  };
   const send_to_IPFS = async (e) => {
     e.preventDefault();
 
@@ -17,13 +26,9 @@ const IntakeForm = () => {
   };
 
   return (
-    <form onSubmit={send_to_IPFS}>
-      <div>
-        {errors.map((error) => (
-          <div>{error}</div>
-        ))}
-      </div>
-      <div>
+    <Form className="intakeForm" onSubmit={send_as_JSON}>
+      <h2>Data Intake</h2>
+      <div className="input-div">
         <label htmlFor="name">Name</label>
         <input
           name="name"
@@ -33,7 +38,7 @@ const IntakeForm = () => {
           onChange={(e) => setName(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-div">
         <label htmlFor="twitter">Twitter</label>
         <input
           name="twitter"
@@ -43,7 +48,7 @@ const IntakeForm = () => {
           onChange={(e) => setTwitter(e.target.value)}
         />
       </div>
-      <div>
+      <div className="input-div">
         <label htmlFor="file">Image File</label>
         <input
           type="file"
@@ -54,8 +59,15 @@ const IntakeForm = () => {
           }}
         />
       </div>
-      <button type="submit">Upload</button>
-    </form>
+      <div>
+        {errors.map((error) => (
+          <div>{error}</div>
+        ))}
+      </div>
+      <Button className="upload-btn" variant="outline-secondary" type="submit">
+        Upload
+      </Button>
+    </Form>
   );
 };
 
