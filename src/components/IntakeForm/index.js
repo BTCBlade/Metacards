@@ -189,8 +189,13 @@ const IntakeForm = () => {
           <Col>
             <div
               Style="background-color:white;
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        text-align:center;
+                        border-radius: 2rem;
                         width:300px;
-                        height: 500px;
+                        height: 300px;
                         margin:30px;
                         padding:15px;"
             >
