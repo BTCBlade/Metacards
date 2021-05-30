@@ -9,12 +9,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import MetaCardsABI from "./MetaCardsNft.json";
-import { NFTStorage, File } from 'nft.storage'
+import { NFTStorage, File } from "nft.storage";
 
 const MetaCardNftContacts = "0xc85D232cdf6eB37533a72F86f16e0Df306c391cC";
 
 const { apiKey } = require("./config.json");
-const client = new NFTStorage({ token: apiKey })
+const client = new NFTStorage({ token: apiKey });
 
 const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
@@ -68,9 +68,13 @@ const IntakeForm = () => {
     const metadata = await client.store({
       name: name,
       description: twitter,
-      image: new File([image] , 'MetaCards.png', { type: 'image/png' })
-    })
-    console.log(metadata.url)
+      image: new File([image], "MetaCards.png", { type: "image/png" }),
+    });
+    console.log(metadata.url);
+    //URL Str prep
+    let https_URL = "https://ipfs.io/ipfs/" + metadata.url.slice(7);
+    console.log(https_URL);
+
     setTokenURIlink(metadata.url);
 
     await mint_nft(metadata.url);
@@ -167,10 +171,10 @@ const IntakeForm = () => {
         </Row>
       </Container>
       <br />
-      <div Style="color: white">
-        <h2>
+      <div Style="color: white; margin-left:5rem;">
+        <h4>
           Token URI link: <a href={tokenURIlink}> {tokenURIlink} </a>{" "}
-        </h2>
+        </h4>
       </div>
     </>
   );
