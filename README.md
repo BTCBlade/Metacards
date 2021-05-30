@@ -168,3 +168,4 @@ Contributions are what make the open source community such an amazing place to b
 - Kyle Longrich 
 
 Project Link: [https://metacards.on.fleek.co/](https://metacards.on.fleek.co/)
+Landing page: [https://trymetacards.com/](https://trymetacards.com/)
