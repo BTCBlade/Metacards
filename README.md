@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="https://rarible.com/user/0xbc5f4ab1ffc9cc33bbb7ecbecbc0a0b421fc9dc1">
-    <img src="https://skybnb.s3.amazonaws.com/logo.png" alt="Logo" width="80" height="80" style="background-color:white">
+    <img src="https://ucarecdn.com/f13fc687-ed6a-4270-8c06-24bcc0ba643c/-/crop/475x486/13,6/-/preview/" alt="Logo" width="80" height="80" style="background-color:white">
   </a>
 
   <h3 align="center">Metacards</h3>
@@ -53,7 +53,7 @@
 
 ## About The Project
 
-[Click here to view Metacards live on the web!](https://skybnb-app.herokuapp.com/)
+[Click here to view Metacards live on the web!](https://trymetacards.com/)
 <br>
 </br>
 <img src="" alt="homepage ss" />
@@ -168,3 +168,4 @@ Contributions are what make the open source community such an amazing place to b
 - Kyle Longrich 
 
 Project Link: [https://metacards.on.fleek.co/](https://metacards.on.fleek.co/)
+Landing page: [https://trymetacards.com/](https://trymetacards.com/)
