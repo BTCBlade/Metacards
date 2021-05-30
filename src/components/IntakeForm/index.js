@@ -75,9 +75,9 @@ const IntakeForm = () => {
     let https_URL = "https://ipfs.io/ipfs/" + metadata.url.slice(7);
     console.log(https_URL);
 
-    setTokenURIlink(metadata.url);
+    setTokenURIlink(https_URL);
 
-    await mint_nft(metadata.url);
+    await mint_nft(https_URL);
   }
 
   async function loadWeb3() {
