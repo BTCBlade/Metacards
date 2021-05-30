@@ -67,7 +67,7 @@ label {
 
 .preview-name {
   position: relative;
-  left: 188px;
+  left: 165px;
   top: 62px;
   font-weight: bold;
   z-index: 5;
@@ -75,22 +75,29 @@ label {
   background-color: black;
   padding-top: 1px;
   color: silver;
-  width: 135px;
+  width: 170px;
   height: 23px;
-  border-color: silver;
-  border-bottom: 50px;
+  border-bottom: 4px solid silver;
+  border-left: 4px solid silver;
+  border-right: 4px solid silver;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
 }
 .preview-twitter {
   position: relative;
-  left: 188px;
-  top: 397px;
+  left: 165px;
+  top: 394px;
 
   z-index: 6;
   text-align: center;
   background-color: black;
   color: silver;
-  width: 130px;
-  height: 25px;
-  border-color: silver;
-  border-bottom: 50px;
+  width: 170px;
+  height: 23px;
+
+  border-top: 4px solid silver;
+  border-left: 4px solid silver;
+  border-right: 4px solid silver;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
 }
