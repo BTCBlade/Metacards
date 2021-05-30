@@ -53,7 +53,7 @@
 
 ## About The Project
 
-[Click here to view Metacards live on the web!](https://skybnb-app.herokuapp.com/)
+[Click here to view Metacards live on the web!](https://trymetacards.com/)
 <br>
 </br>
 <img src="" alt="homepage ss" />
