@@ -9,11 +9,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import MetaCardsABI from "./MetaCardsNft.json";
-
-const ipfsAPI = require("ipfs-api");
-const ipfs = ipfsAPI("ipfs.infura.io", "5001", { protocol: "https" });
+import { NFTStorage, File } from 'nft.storage'
 
 const MetaCardNftContacts = "0xc85D232cdf6eB37533a72F86f16e0Df306c391cC";
+
+const { apiKey } = require("./config.json");
+const client = new NFTStorage({ token: apiKey })
 
 const IntakeForm = () => {
   const [errors, setErrors] = useState([]);
@@ -64,23 +65,15 @@ const IntakeForm = () => {
   }
 
   async function send_data_to_ipfs() {
-    let data = {
+    const metadata = await client.store({
       name: name,
-      twitter: twitter,
-      Image: image,
-    };
+      description: twitter,
+      image: new File([image] , 'MetaCards.png', { type: 'image/png' })
+    })
+    console.log(metadata.url)
+    setTokenURIlink(metadata.url);
 
-    await ipfs.files.add(
-      Buffer.from(JSON.stringify(data)),
-      function (err, res) {
-        if (err) {
-          console.log(err);
-        }
-        console.log(res[0].hash);
-        setTokenURIlink("https://www.ipfs.io/ipfs/" + res[0].hash);
-        mint_nft("https://www.ipfs.io/ipfs/" + res[0].hash);
-      }
-    );
+    await mint_nft(metadata.url);
   }
 
   async function loadWeb3() {
